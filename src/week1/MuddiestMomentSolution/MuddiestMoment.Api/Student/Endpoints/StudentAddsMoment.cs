@@ -2,20 +2,21 @@
 
 namespace MuddiestMoment.Api.Student.Endpoints;
 
-public static class StudentAddsMoment
-{
-    public static async Task<Ok<StudentMomentResponseModel>> AddMoment(StudentMomentCreateModel request)
+    public static class StudentAddsMoment
     {
-        var response = new StudentMomentResponseModel
+        public static async Task<Ok<StudentMomentResponseModel>> AddMoment(StudentMomentCreateModel request)
         {
-            Id = Guid.NewGuid(),
-            Title = request.Title,
-            Description = request.Description,
-            CreatedOn = DateTimeOffset.UtcNow,
-            AddedBy = "fake user"
-        };
+            var response = new StudentMomentResponseModel
+            {
+                Id = Guid.NewGuid(),
+                Title = request.Title,
+                Description = request.Description,
+                CreatedOn = DateTimeOffset.UtcNow,
+                AddedBy = "fake user"
+            };
+         
 
-
-        return TypedResults.Ok(response);
+            return TypedResults.Ok(response);
+        }
     }
-}
+

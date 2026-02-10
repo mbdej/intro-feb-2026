@@ -48,10 +48,20 @@ Authorization: Bearer ???? (Fake this for while)
 
 ```
 
+1. Get of the 404 - 
+    - if it is good, something in the range of 200-299.
+    - if the user made a bad request, those are 400-499
+        - If you don't an authoriztion header that we trust, 401.
+        - If I know who are are (you are authenticated), but, seriously, take this personally, YOU cannot do that - 403.
+        - 400 - You screwed up.
+            - general bad request
+    - Any success Status Code - would be 200-299
+        - 200 Ok. With a body.
+
 
 ```http
-GET https://localhost:7059/student/moments 
-Authorization: why
+GET https://localhost:1337/student/moments 
+
 ```
 
 

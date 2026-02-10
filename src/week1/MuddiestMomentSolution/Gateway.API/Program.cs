@@ -1,5 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
-// configure this application to use the settings that are shared accross all APIs in this solution
+// configure this application to use the settings that are shared across all APIs in this solution
 builder.AddServiceDefaults();
 
 // Add services to the container.
@@ -34,6 +34,7 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
 
 app.MapDefaultEndpoints(); // the health checks and all that.
 app.Run();
