@@ -9,19 +9,67 @@
 - Description (optional, more context for what your looking for)
 
 
-// my go to fake variable names are "tacos" or other foods. Because I love those things and I'm chubby.
-// my go to for dates and numbers is 42069 - because THAT IS MY BIRTHDAY, THE COOLEST THING ABOUT ME.
+When I said before lunch "What data do we need to provide the server to process this request"
+- I meant "we spent a good part of a 1/2 hour talking about the functionality of this application. - how do we get that? What do we need?"
+- Programs are Code (static) and Data (changing). Just saved you 4 years of school.
+- Data is used to present "state" - what is the thing *now* (and sometimes at other arbitrary dates and time).
+- What data do we need to be able to write the code to enable the functionality we designed?
+
+- features, abbreviated:
+    - students: (YOU component)
+        - add MM - the collection of YOUR MM
+        - edit an MM    -- you can edit one of YOUR MM, but not someone elses
+        - remove an MM -- you can remove one of yourse, but not someone elses.
+        - see all of their MM -- You can see your list, but not anyone elses.
+    - instructor
+        - see the aggregated list -- I can see all of them, but I don't know created each one.
+        - punt -- I have my own list, basically, that I can put things on to defer them to later.
+
+
+"Store"
+
+- Documents
+
+    /employees/x99999
+
+
+
+- Collections
+    /employees
+
 ```http
-POST https://localhost:7059/students/a42069/moments
+POST https://localhost:1337/student/moments 
 Content-Type: application/json
-Authorization: """"""
+Authorization: Bearer ???? (Fake this for while)
 
 {
-    "title": "HTTP",
-    "description": "Jeff is a poopy head"
+    "title": "HTTP Stuff"
 }
 
 ```
+
+
+```http
+GET https://localhost:7059/student/moments 
+Authorization: why
+```
+
+
+```
+200 Ok
+Content-type: application/json
+
+[
+    {
+        "id": "8398398",
+        "title": "HTTP",
+        "description": "More On Resources, plz.",
+        "createdAt": "{{timeStamp}}",
+        "addedBy": "sue@company.com"
+    }
+
+]
+``
 
 ### Get a list of MM
 
