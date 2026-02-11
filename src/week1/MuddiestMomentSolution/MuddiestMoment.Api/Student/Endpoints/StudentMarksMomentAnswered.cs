@@ -23,6 +23,7 @@ public static class StudentMarksMomentAnswered
 
             return TypedResults.Ok();
         }
+        // if the moment exist for this user with this id, update in the database and mark it as answered.
         savedMoment.IsAnswered = true;
         session.Store(savedMoment);
         await session.SaveChangesAsync();
