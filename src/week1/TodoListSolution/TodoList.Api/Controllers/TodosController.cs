@@ -4,11 +4,16 @@ namespace TodoList.Api.Controllers;
 
 public class TodosController : ControllerBase
 {
-    // when they a get request /todos
+    // When they a get request /todos
     [HttpGet("/todos")]
     public async Task<ActionResult> GetAllTodos()
     {
         
-        return Ok(new List<string> { "clean the garage", "take out the trash" });
+        return Ok(new List<string> {  "Clean The Garage", "Take Out The Trash"});
     }
+    // GET /todos/{id}
+
+    // POST /
+
+    // PUT /todos/{id}/person
 }

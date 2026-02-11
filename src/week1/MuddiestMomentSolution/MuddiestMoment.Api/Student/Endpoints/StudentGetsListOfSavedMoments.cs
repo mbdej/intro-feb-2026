@@ -2,7 +2,7 @@
 
 namespace MuddiestMoment.Api.Student.Endpoints;
 
-public static class StudentGetsListOfSavedMoments
+public static  class StudentGetsListOfSavedMoments
 {
     public static async Task<IResult> GetAllMomentsForStudent(IDocumentSession session)
     {

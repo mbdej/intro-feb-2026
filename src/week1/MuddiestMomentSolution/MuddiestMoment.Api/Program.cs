@@ -5,7 +5,9 @@ using MuddiestMoment.Api.Student;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 var connectionString = builder.Configuration.GetConnectionString("db-mm") ?? throw new Exception("No Connection String");
+
 
 builder.Services.AddMarten(config =>
 {
@@ -26,7 +28,7 @@ var app = builder.Build();
 
 // add the code I am about to write that allows us to handle POST to /student/m
 
-app.MapStudentEndpoints();
+app.MapStudentEndpoints(); // More explicit - means more "intention revealing"
 
 app.MapDefaultEndpoints();
 

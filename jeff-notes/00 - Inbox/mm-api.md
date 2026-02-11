@@ -43,7 +43,8 @@ Content-Type: application/json
 Authorization: Bearer ???? (Fake this for while)
 
 {
-    "title": "HTTP Stuff 3"
+    "title": "Database Stuff",
+    "description": "What is a document database? "
 }
 
 ```
