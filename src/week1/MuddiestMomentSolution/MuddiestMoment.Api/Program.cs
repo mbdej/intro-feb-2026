@@ -1,8 +1,16 @@
 // [X] Use Top Level Statements
 
+using Marten;
 using MuddiestMoment.Api.Student;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("db-mm") ?? throw new Exception("No Connection String");
+
+builder.Services.AddMarten(config =>
+{
+    config.Connection(connectionString);
+}).UseLightweightSessions();
 
 builder.AddServiceDefaults();
 // Add the services to the container.
