@@ -43,8 +43,8 @@ Content-Type: application/json
 Authorization: Bearer ???? (Fake this for while)
 
 {
-    "title": "Database Stuff",
-    "description": "What is a document database? "
+    "title": "Containers",
+    "description": "Tell me about volumes"
 }
 
 ```
@@ -65,6 +65,8 @@ GET https://localhost:1337/student/moments
 
 ```
 
+```http
+DELETE https://localhost:1337/student/moments/82c4721b-734e-4c76-911b-e50ef3590b31
 
 ```
 200 Ok
