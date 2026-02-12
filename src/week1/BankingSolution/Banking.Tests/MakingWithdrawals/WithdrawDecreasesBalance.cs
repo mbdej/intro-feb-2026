@@ -8,13 +8,15 @@ public class WithdrawDecreasesBalance
     [Fact]
     public void Example()
     {
-        // Given I have abrand new account and I get the opening balance
         var account = new Account();
+
+
         var openingBalance = account.GetBalance();
         var amountToWithdraw = 123.23M;
 
         // When I deposit 123.23
         account.Withdraw(amountToWithdraw);
+
 
         // Then the balance of that account should increase by that amount
         Assert.Equal(openingBalance - amountToWithdraw, account.GetBalance());
@@ -23,6 +25,7 @@ public class WithdrawDecreasesBalance
     [Fact]
     public void CanWithdrawFullBalance()
     {
+
         var account = new Account();
         account.Withdraw(account.GetBalance());
 
@@ -32,27 +35,35 @@ public class WithdrawDecreasesBalance
     [Fact]
     public void OverdraftIsUnbound()
     {
-        // Given I have abrand new account and I get the opening balance
         var account = new Account();
+
+
         var openingBalance = account.GetBalance();
         var amountToWithdraw = openingBalance * 2;
 
         // When I deposit 123.23
         account.Withdraw(amountToWithdraw);
 
+
         // Then the balance of that account should increase by that amount
         Assert.Equal(openingBalance, account.GetBalance());
     }
 
     [Fact]
-    public void TransactionAmountMustBeCorrect()
+    public void TransactionAmountsMustBeCorrect()
     {
         // deposit and withdrawal only allow amounts that are > 0
         var account = new Account();
+
+
         var openingBalance = account.GetBalance();
+        
 
-
+    
+    
         account.Withdraw(-8450.23M);
+
+
 
         // Then the balance of that account should increase by that amount
         Assert.Equal(openingBalance, account.GetBalance());

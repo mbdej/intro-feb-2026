@@ -9,26 +9,31 @@ public class Account
 
     public void Deposit(decimal amountToDeposit)
     {
+  
         _currentBalance += amountToDeposit;
     }
 
     public decimal GetBalance()
     {
+
         return _currentBalance;
     }
 
+    // Primitive Obsession 
     public void Withdraw(decimal amountToWithdraw)
     {
         if (IsAllowedTransactionAmount(amountToWithdraw))
         {
             if (amountToWithdraw <= _currentBalance)
             {
+
                 _currentBalance -= amountToWithdraw;
             }
+            
         }
     }
 
-    private static bool IsAllowedTransactionAmount(decimal amountToWithdraw)
+    private  bool IsAllowedTransactionAmount(decimal amountToWithdraw)
     {
         return amountToWithdraw > 0;
     }
