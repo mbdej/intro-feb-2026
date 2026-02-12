@@ -34,6 +34,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapStudentEndpoints(); // More explicit - means more "intention revealing"
 
+
 app.MapDefaultEndpoints();
 
 // the api is not up and running (listening for requests until we hit the next line)

@@ -5,15 +5,14 @@ public class UnitTest1
     [Fact]
     public void CanAddTenAndTwenty()
     {
-        // Arrange - Given
+        // Arrage - Given
         int a = 10;
         int b = 20;
         int answer;
 
         // Act - When
         answer = a + b;
-
-        // Assert - Then
+        // Assert - Then 
         Assert.Equal(30, answer);
     }
 
@@ -23,6 +22,7 @@ public class UnitTest1
     [InlineData(3,3,6)]
     public void CanAddOtherIntegersToo(int a, int b, int expected)
     {
+
         int answer = a + b;
         Assert.Equal(expected, answer);
     }
