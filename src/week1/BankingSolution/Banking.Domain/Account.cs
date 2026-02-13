@@ -7,11 +7,19 @@ public class Account
 {
     private decimal _currentBalance = 5000M;
 
+    private ICalculateBonusesForAccounts _calculateBonusesForAccounts;
+
+    public Account(ICalculateBonusesForAccounts calc)
+    {
+        _calculateBonusesForAccounts = calc;
+    }
+
     public void Deposit(TransactionAmount amountToDeposit)
     {
         // if the amountToDeposit is 0 or less, throw an exception - abnormal end.
-
-        _currentBalance += amountToDeposit;
+        //var bonusCalculator = new StandardBonusCalculator(); // this is a real, concrete thing. 
+        // "new is glue"
+        _currentBalance += amountToDeposit + _calculateBonusesForAccounts.CalculateBonusForDeposit(_currentBalance, amountToDeposit);
     }
 
     public decimal GetBalance()
