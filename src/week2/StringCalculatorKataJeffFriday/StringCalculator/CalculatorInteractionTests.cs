@@ -1,12 +1,10 @@
 ﻿
 
-using Castle.Core.Logging;
-using System.Net.Security;
-
 namespace StringCalculator;
 
 public class CalculatorInteractionTests
 {
+
     [Theory]
     [InlineData("1,2", "3")]
     [InlineData("42", "42")]
@@ -16,17 +14,19 @@ public class CalculatorInteractionTests
         var mockedLogger = Substitute.For<ILogger>();
         var calculator = new Calculator(mockedLogger, Substitute.For<INotifyTheHelpDesk>());
 
-        // when
+        // When
         var result = calculator.Add(example);
 
-        // this test will only pass if
+        // This test will only pass if
         // "3" is written to the logger.
-        // then - this is the part that is going to pass or fail.
+        // Then - this is the part that is going to pass or fail.
         mockedLogger.Received().LogAddResults(expected);
+
     }
 
     [Theory]
     [InlineData("1,2", "3")]
+
     public void LoggerThrows(string example, string expected)
     {
         // Given
@@ -35,18 +35,20 @@ public class CalculatorInteractionTests
         var calculator = new Calculator(stubbedLogger, mockedNotifier);
         stubbedLogger.When(logger => logger.LogAddResults(Arg.Any<string>()))
             .Throw(new Exception("Blammo~"));
-
-        // when
+            
+        // When
         var result = calculator.Add(example);
 
-        // this test will only pass if
+        // This test will only pass if
         // "3" is written to the logger.
-        // then - this is the part that is going to pass or fail.
-        mockedNotifier.Received(1).Notify("Wasn't able to log: 3");
+        // Then - this is the part that is going to pass or fail.
+        mockedNotifier.Received(1).Notify("Wan't able to log: 3");
+        
     }
 
     [Theory]
     [InlineData("1,2", "3")]
+
     public void HelpDeskNotnotifiedWithNoException(string example, string expected)
     {
         // Given
@@ -56,13 +58,14 @@ public class CalculatorInteractionTests
         //stubbedLogger.When(logger => logger.LogAddResults(Arg.Any<string>()))
         //    .Throw(new Exception("Blammo~"));
 
-        // when
+        // When
         var result = calculator.Add(example);
 
-        // this test will only pass if
+        // This test will only pass if
         // "3" is written to the logger.
-        // then - this is the part that is going to pass or fail.
-        mockedNotifier.DidNotReceive().Notify(Arg.Any<string>());
+        // Then - this is the part that is going to pass or fail.
+        mockedNotifier.DidNotReceive()
+            .Notify(Arg.Any<string>());
+
     }
 }
-

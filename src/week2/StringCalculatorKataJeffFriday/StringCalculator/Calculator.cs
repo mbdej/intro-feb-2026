@@ -1,7 +1,7 @@
 ﻿
 // what 
-// "interface segregation principle"
-    // you define what you need, don't just use what's available
+// "Interface Segregation Principle"
+    // you define what you need, don't just use what's available.
 
 public interface ILogger
 {
@@ -25,13 +25,13 @@ public class Calculator(ILogger _logger, INotifyTheHelpDesk _helpDesk)
             .Sum(); // 10
 
         // Do something here
-        // this is a "non-functional" or "technical" requirement
-        // side effect just means that something is happening
-        // that doesn't change the observable behavior of the
-        // caller of this method
-        // 
+        // this is a "non-functional" or "technical" requirement.
+        // Side effect just means that something is happening
+        // that doesn't change the observable behavior of the 
+        // caller of this method.
+        //
         // logging is "leaving the escape room" - leaving the process
-        // writing to the file system
+        // writing to the file system.
 
         try
         {
@@ -39,20 +39,22 @@ public class Calculator(ILogger _logger, INotifyTheHelpDesk _helpDesk)
         }
         catch (Exception)
         {
-            // the help desk is notified
-            _helpDesk.Notify("Wasn't able to log: " + result.ToString());
-            // gulp
+            // The help desk is notified.
+          
+          
+            // gulp!
+        _helpDesk.Notify("Wan't able to log: " + result.ToString());
         }
+       
         return result;
 
     }
 }
 
 
-
-// test double
-// dummy - not really part of the test, just need something so we don't get a NRE
-// stub - a thing that has canned responses to questions. simulating faults
-// mock - record their interactions.
-// fake - we will do this in our api. it's not our code, it's a "stand in" for something
-// that will be there in "production" - 
+// Test Double
+// Dummy - not really part of the test, just need something so we don't get a NRE
+// Stub - a thing that has canned responses to questions. Simulating faults.
+// Mock - Record their interactions. 
+// Fake - We will do this in our API. It's not our code, it's a "stand in" for something
+//  That will be there in "production" - 
