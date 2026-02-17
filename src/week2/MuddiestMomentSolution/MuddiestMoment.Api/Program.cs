@@ -2,12 +2,14 @@
 
 using Marten;
 using MuddiestMoment.Api.Student;
+using MuddiestMoment.Api.Student.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 var connectionString = builder.Configuration.GetConnectionString("db-mm") ?? throw new Exception("No Connection String");
 
+//builder.Services.AddScoped<IProvideUserInformation, MartinUserInformationPro3000>();
 
 builder.Services.AddMarten(config =>
 {
