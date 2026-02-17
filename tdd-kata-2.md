@@ -25,6 +25,25 @@ This is about:
     - "does the thing right" - subjective - we are trying to write code that has some qualities to it. Not all code is equal.
     -  expresses intent, fewest number of elements,  duplication - "moist" or "rug" is best.
     -  reusable - not as common as you think. We aren't (usually) library or framework developers.
+        - but we reuse "concepts" not "code" - for example, there is a HUGE difference between copying the following code into a new location:
+
+```csharp
+public void Deposit(decimal amount)
+{
+    if(amount <= 0) {
+        throw new InvalidTransactionAmountException();
+    }
+    _balance += amount;
+}
+
+```
+
+And our identifying a "concept" that is expressed by that `if` statement, which we labeled `TransactionAmount` - we can reuse THAT.
+
+> Note: Realizing I did an overly-smart developer thing with the naming on TransactionAmount - maybe. I mean, what do most people call the thing
+> we put into or take out of our accounts? "Yes, I'd like $250 in TransactionAmount, please?" - "Ubiquitous Language" - Domain Driven Design - just call it money, you dork. (see `TimeProvider` from Microsoft.)
+
+
 
 - LOOSE COUPLING.
     - Coupling is the "strength of relationships between code modules"

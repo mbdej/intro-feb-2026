@@ -8,6 +8,7 @@ public static class StudentAddsMoment
     public static async Task<Ok<StudentMomentResponseModel>> AddMoment(
         StudentMomentCreateModel request, IDocumentSession session, IProvideUserInformation userInfoProvider)
     {
+
         var userId = userInfoProvider.GetUserId();
         var response = new StudentMomentResponseModel
         {

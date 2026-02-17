@@ -13,23 +13,27 @@ public class AddsMoment
     [Fact]
     public async Task CanAddAMoment()
     {
+
         // starting up postgres - notice the version
         var postgreSqlContainer = new PostgreSqlBuilder("postgres:17.5").Build();
         await postgreSqlContainer.StartAsync();
 
         var stubbedUserProvider = Substitute.For<IProvideUserInformation>();
         stubbedUserProvider.GetUserId().Returns("TEST-USER");
-        // start up my api
+        // Start up my API
         var host = await AlbaHost.For<Program>(config =>
         {
             // example 1 of the "gray box testing" thing.
             config.UseSetting("ConnectionStrings:db-mm", postgreSqlContainer.GetConnectionString());
-            // config.ConfigurTesteServices
+            // config.ConfigureTestServicesServices
             config.ConfigureServices(sp =>
             {
                 sp.AddScoped<IProvideUserInformation>((_) => stubbedUserProvider);
             });
         });
+        
+ 
+       
 
         // Scenario
         // start up the API
@@ -70,12 +74,6 @@ dotnet test // run my system tests.
 */
 
 /*
-var postgreSqlContainer = new PostgreSqlBuilder("postgres:17.5").Build();
-       await postgreSqlContainer.StartAsync();
 
-       var host = await AlbaHost.For<Program>(config =>
-       {
-           config.UseSetting("ConnectionStrings:db-mm", postgreSqlContainer.GetConnectionString());
-       }
            );
  */
