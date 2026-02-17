@@ -5,9 +5,8 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet],
   template: `
-    <h1>Hello, {{ title() }}</h1>
-
-    <router-outlet />
+    <p>This is the story of my life</p>
+    <h2>Chapter 1 - in the beginning</h2>
   `,
   styles: [],
 })
