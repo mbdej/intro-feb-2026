@@ -16,4 +16,8 @@ export const routes: Routes = [
     path: '',
     component: Home,
   },
+  {
+    path: 'basics',
+    loadChildren: () => import('./areas/basics/basics.routes').then((m) => m.BasicsRoutes),
+  },
 ];

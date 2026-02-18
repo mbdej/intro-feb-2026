@@ -60,5 +60,6 @@ export class Nav {
   links = signal([
     { name: 'About', path: '/about' },
     { name: 'Profile', path: '/profile' },
+    { name: 'Basics', path: '/basics' },
   ]);
 }
