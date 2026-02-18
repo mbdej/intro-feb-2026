@@ -1,21 +1,31 @@
-import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, signal, computed } from '@angular/core';
+import { Fizzbuzz } from './fizzbuzz';
 
 @Component({
   selector: 'app-basics-signals',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
+  imports: [Fizzbuzz],
   template: `
-    <div class="flex flex-row p-8 gap-4">
+    <div class="flex flex-row p-8 gap-4" [class.animate-pulse]="magic()">
       <button class="btn btn-sm btn-warning btn-circle" (click)="decrement()">-</button>
       <span class="mx-2">{{ current() }}</span>
       <button class="btn btn-sm btn-primary btn-circle" (click)="increment()">+</button>
-      <button class="btn btn-sm btn-secondary" (click)="current.set(0)">Reset</button>
+      <button
+        class="btn btn-sm btn-secondary"
+        [disabled]="resetShouldBeDisabled()"
+        (click)="current.set(0)"
+      >
+        Reset
+      </button>
     </div>
+    <app-basics-fizzbuzz [count]="current()" (fizzbuzzing)="magic.set(true)" />
   `,
   styles: ``,
 })
 export class SignalsPage {
   current = signal(0);
+
+  magic = signal(false);
 
   increment() {
     this.current.update((oldVal) => oldVal + 1);
@@ -24,4 +34,6 @@ export class SignalsPage {
   decrement() {
     this.current.update((oldVal) => oldVal - 1);
   }
+
+  resetShouldBeDisabled = computed(() => this.current() === 0);
 }
