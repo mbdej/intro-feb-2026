@@ -1,11 +1,11 @@
 import { httpResource } from '@angular/common/http';
 import { signalStore, withHooks, withProps } from '@ngrx/signals';
-import { QuestionListItem } from './types';
 
+import { GetQuestionsResponse } from '../shared/api';
 export const QuestionStore = signalStore(
   withProps(() => {
     return {
-      questionResource: httpResource<QuestionListItem[]>(() => '/api/questions'),
+      questionResource: httpResource<GetQuestionsResponse>(() => '/api/questions'),
     };
   }),
   withHooks({

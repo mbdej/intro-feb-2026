@@ -1,6 +1,6 @@
 import { httpResource } from '@angular/common/http';
 import { Component, ChangeDetectionStrategy, signal, inject } from '@angular/core';
-import { QuestionListItem } from '../types';
+
 import { QuestionStore } from '../question-store';
 
 @Component({
