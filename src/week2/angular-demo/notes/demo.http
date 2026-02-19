@@ -1,0 +1,12 @@
+GET https://localhost:9300/questions 
+Accept: application/json
+
+###
+
+POST https://localhost:9300/questions
+Content-Type: application/json
+
+{
+  "title": "How to make Winget work with Powershell",
+  "content": "Winget is giving me a certificate error"
+}
