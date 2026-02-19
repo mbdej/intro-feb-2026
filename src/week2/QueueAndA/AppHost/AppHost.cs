@@ -1,6 +1,8 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var pg = builder.AddPostgres("pg", port: 5432).WithImage("postgres:17.5");
+var pg = builder.AddPostgres("pg", port: 5432).WithImage("postgres:17.5")
+    .WithLifetime(ContainerLifetime.Session);
+
 var qaDb = pg.AddDatabase("qa-db");
 
 
