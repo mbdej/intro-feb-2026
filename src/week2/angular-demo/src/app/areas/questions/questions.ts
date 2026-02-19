@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { QuestionStore } from './question-store';
 
 @Component({
   selector: 'app-questions',
@@ -23,4 +24,6 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   `,
   styles: ``,
 })
-export class Questions {}
+export class Questions {
+  store = inject(QuestionStore);
+}
