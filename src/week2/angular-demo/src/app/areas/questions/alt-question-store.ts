@@ -25,9 +25,9 @@ export const AltQuestionStore = signalStore(
             .then((data) => zGetQuestionsResponse.parse(data)); // if you really don't trust apis, or if failure is not an option, VALIDATE the data.
           patchState(store, setEntities(data || []));
         } catch (ex) {
+          // webService.notify(this thing is broke!)
           console.error('Could not validate the API data! What should we do?', ex);
         }
-       
       },
     };
   }),
